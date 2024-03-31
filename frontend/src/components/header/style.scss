@@ -1,0 +1,20 @@
+.header-container {
+  box-shadow: 0 3px 3px #ccc;
+
+  .header-brand {
+    font-weight: bold;
+    font-size: 28px;
+  }
+
+  .header-button {
+    font-size: 14px;
+  }
+
+  .header-error-message {
+    font-size: 11px;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+}
