@@ -27,3 +27,14 @@ export type Video = {
   user: User;
   votes: Vote[];
 };
+
+export type VoteParams = {
+  vote: { id?: number; vote_type: number; video_id: number; user_id: number };
+};
+
+export type Vote = {
+  id: number;
+  vote_type: number;
+  user_id: number;
+  video_id: number;
+};

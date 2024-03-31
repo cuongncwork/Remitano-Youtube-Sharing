@@ -59,6 +59,16 @@ class ApiService {
     const response = await this.INSTANCE.post('videos', params);
     return response.data;
   };
+
+  vote = async (params: VoteParams) => {
+    const response = await this.INSTANCE.post('votes', params);
+    return response.data;
+  };
+
+  removeVote = async (id: number) => {
+    const response = await this.INSTANCE.delete(`votes/${id}`);
+    return response.data;
+  };
 }
 
 const API = new ApiService();

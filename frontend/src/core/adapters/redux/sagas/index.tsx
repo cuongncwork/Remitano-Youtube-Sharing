@@ -13,6 +13,8 @@ const authSagas = [
 const homeSagas = [
   takeLatest(HomeTypes.GET_VIDEOS, getVideos),
   takeLatest(HomeTypes.SHARE_VIDEO, shareVideo),
+  takeLatest(HomeTypes.VOTE_VIDEO, voteVideo),
+  takeLatest(HomeTypes.REMOVE_VOTE_VIDEO, removeVoteVideo),
 ];
 
 export default function* root() {

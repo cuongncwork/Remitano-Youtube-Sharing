@@ -43,3 +43,51 @@ export function* shareVideo({
     });
   }
 }
+
+export function* voteVideo({ params, type }: { params: VoteParams; type: string }) {
+  try {
+    const vote: Vote = yield call(API.vote, params);
+    const videos: Video[] = yield select((state) => state.home.videos);
+    const video: Video | undefined = videos.find((v) => v.id === params.vote.video_id);
+
+    if (video) {
+      const { votes } = video;
+      const updatedVotes = [...votes, vote];
+
+      yield put({
+        type: HomeTypes.VOTE_VIDEO_SUCCESS,
+        video: { ...video, votes: updatedVotes },
+      });
+    }
+  } catch (ex: any) {
+    yield put({
+      type: HomeTypes.VOTE_VIDEO_FAILURE,
+      error: ex?.message || 'Vote video error',
+    });
+  }
+}
+
+export function* removeVoteVideo({ vote, type }: { vote: Vote; type: string }) {
+  try {
+    yield call(API.removeVote, vote.id);
+    const videos: Video[] = yield select((state) => state.home.videos);
+    const video: Video | undefined = videos.find((v) => v.id === vote.video_id);
+
+    if (video) {
+      const { votes } = video;
+      const voteIndex = votes.findIndex((v) => v.id === vote.id);
+      const updatedVotes = [...votes];
+      updatedVotes.splice(voteIndex, 1);
+
+      yield put({
+        type: HomeTypes.REMOVE_VOTE_VIDEO_SUCCESS,
+        video: { ...video, votes: updatedVotes },
+      });
+    }
+  } catch (ex: any) {
+    yield put({
+      type: HomeTypes.REMOVE_VOTE_VIDEO_FAILURE,
+      error: ex?.message || 'Remove vote video error',
+    });
+  }
+}

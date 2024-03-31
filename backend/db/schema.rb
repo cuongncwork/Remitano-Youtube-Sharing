@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_060419) do
   end
 
   create_table "videos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "video_id"
     t.string "url"
     t.string "title"
     t.text "description"
