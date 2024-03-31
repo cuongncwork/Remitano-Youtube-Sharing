@@ -30,4 +30,18 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "is required"
+            password:
+              blank: "is required"
+              too_short: "at least %{count} characters"
+  activemodel:
+    errors:
+      models:
+        authenticate_user:
+          failure: Wrong email or password
