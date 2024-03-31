@@ -49,6 +49,16 @@ class ApiService {
     const response = await this.INSTANCE.get('get_user');
     return response.data;
   };
+
+  getVideos = async () => {
+    const response = await this.INSTANCE.get('videos');
+    return response.data;
+  };
+
+  shareVideo = async (params: ShareParams) => {
+    const response = await this.INSTANCE.post('videos', params);
+    return response.data;
+  };
 }
 
 const API = new ApiService();

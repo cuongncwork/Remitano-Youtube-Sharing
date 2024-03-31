@@ -4,9 +4,16 @@ import { AuthTypes } from '../reducer/auth';
 import { checkLoggedIn, signIn, signOut } from './auth';
 import { getVideos, removeVoteVideo, shareVideo, voteVideo } from './home';
 
-const authSagas = [];
+const authSagas = [
+  takeLatest(AuthTypes.CHECK_LOGGED_IN, checkLoggedIn),
+  takeLatest(AuthTypes.SIGN_IN, signIn),
+  takeLatest(AuthTypes.SIGN_OUT, signOut),
+];
 
-const homeSagas = [];
+const homeSagas = [
+  takeLatest(HomeTypes.GET_VIDEOS, getVideos),
+  takeLatest(HomeTypes.SHARE_VIDEO, shareVideo),
+];
 
 export default function* root() {
   yield all([...homeSagas, ...authSagas]);

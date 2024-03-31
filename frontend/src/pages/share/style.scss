@@ -1,0 +1,17 @@
+.share-movie-container {
+  width: 100%;
+  border: 1px solid #cccccc;
+  margin-top: 50px;
+  padding: 20px;
+  position: relative;
+
+  .share-movie-title {
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    line-height: 20px;
+    padding: 0 10px;
+    font-weight: bold;
+    background-color: #ffffff;
+  }
+}

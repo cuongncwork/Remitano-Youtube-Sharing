@@ -6,17 +6,20 @@ import Share from '../pages/share';
 import { AuthActions } from '../core/adapters/redux/reducer/auth';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { HomeActions } from '../core/adapters/redux/reducer/home';
 
 type RoutingProps = {
   checkLoggedIn: () => void;
+  getVideos: () => void;
 };
 
 const Routing = (props: RoutingProps) => {
-  const { checkLoggedIn } = props;
+  const { checkLoggedIn, getVideos } = props;
 
   useEffect(() => {
     checkLoggedIn();
-  }, [checkLoggedIn]);
+    getVideos();
+  }, [checkLoggedIn, getVideos]);
 
   return (
     <div className="container">
@@ -33,6 +36,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   checkLoggedIn: () => dispatch(AuthActions.checkLoggedIn()),
+  getVideos: () => dispatch(HomeActions.getVideos()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routing);

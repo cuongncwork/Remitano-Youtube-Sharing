@@ -1,0 +1,38 @@
+.movie-item-container {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+
+  .movie-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+  }
+
+  .movie-shared-by {
+    font-size: 18px;
+  }
+
+  .movie-video {
+    iframe {
+      width: 100%;
+    }
+  }
+
+  .movie-description-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .movie-description-content {
+    font-size: 16px;
+    text-align: justify;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  .left {
+    padding-right: 20px;
+  }
+}

@@ -17,6 +17,8 @@ gem "puma", "~> 5.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
+gem "redis-namespace"
+gem "redis-rails"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -40,10 +42,17 @@ gem "jwt"
 
 gem "simple_command"
 
+gem "active_model_serializers", "~> 0.10.0"
+
+gem "yt", "~> 0.29.1"
+
+gem "video_info", "~> 4.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails", "~> 6.0.0"
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -53,4 +62,5 @@ end
 
 group :test do
   gem "faker"
+  gem "shoulda-matchers", "~> 5.0"
 end

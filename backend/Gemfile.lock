@@ -46,6 +46,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_model_serializers (0.10.13)
+      actionpack (>= 4.1, < 7.1)
+      activemodel (>= 4.1, < 7.1)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (7.0.7)
       activesupport (= 7.0.7)
       globalid (>= 0.3.6)
@@ -66,10 +71,14 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    ansi (1.5.0)
+    ast (2.4.2)
     bcrypt (3.1.19)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    case_transform (0.2)
+      activesupport
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
@@ -78,6 +87,11 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faker (3.2.1)
       i18n (>= 1.8.11, < 2)
     globalid (1.1.0)
@@ -87,6 +101,8 @@ GEM
     io-console (0.6.0)
     irb (1.7.4)
       reline (>= 0.3.6)
+    iso8601 (0.13.0)
+    jsonapi-renderer (0.2.2)
     jwt (2.7.1)
     loofah (2.21.3)
       crass (~> 1.0.2)
@@ -111,11 +127,15 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
+    net_http_timeout_errors (1.0.0)
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
+    oga (3.4)
+      ast
+      ruby-ll (~> 2.1)
     puma (5.6.6)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -154,6 +174,24 @@ GEM
       zeitwerk (~> 2.5)
     rake (13.0.6)
     redis (4.8.1)
+    redis-actionpack (5.3.0)
+      actionpack (>= 5, < 8)
+      redis-rack (>= 2.1.0, < 3)
+      redis-store (>= 1.1.0, < 2)
+    redis-activesupport (5.3.0)
+      activesupport (>= 3, < 8)
+      redis-store (>= 1.3, < 2)
+    redis-namespace (1.11.0)
+      redis (>= 4)
+    redis-rack (2.1.4)
+      rack (>= 2.0.8, < 3)
+      redis-store (>= 1.2, < 2)
+    redis-rails (5.0.2)
+      redis-actionpack (>= 5.0, < 6)
+      redis-activesupport (>= 5.0, < 6)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.9.2)
+      redis (>= 4, < 6)
     reline (0.3.7)
       io-console (~> 0.5)
     rspec-core (3.12.2)
@@ -173,25 +211,39 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
+    ruby-ll (2.1.3)
+      ansi
+      ast
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     simple_command (1.0.1)
     spring (4.1.1)
     thor (1.2.2)
     timeout (0.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    video_info (4.0.0)
+      iso8601 (~> 0.13.0)
+      net_http_timeout_errors (~> 1.0.0)
+      oga (~> 3.4)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    yt (0.29.1)
+      activesupport
     zeitwerk (2.6.11)
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
+  active_model_serializers (~> 0.10.0)
   bcrypt (~> 3.1.7)
   bootsnap
   debug
+  factory_bot_rails
   faker
   jwt
   mysql2 (~> 0.5)
@@ -199,10 +251,15 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.7)
   redis (~> 4.0)
+  redis-namespace
+  redis-rails
   rspec-rails (~> 6.0.0)
+  shoulda-matchers (~> 5.0)
   simple_command
   spring
   tzinfo-data
+  video_info (~> 4.0)
+  yt (~> 0.29.1)
 
 RUBY VERSION
    ruby 3.2.2p53
