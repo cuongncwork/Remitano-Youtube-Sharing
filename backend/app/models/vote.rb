@@ -1,0 +1,4 @@
+class Vote < ApplicationRecord
+  belongs_to :videos
+  belongs_to :users
+end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  post "login" => "session#login"
+  get "get_user" => "session#get_user"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  mount ActionCable.server => '/cable'
 end
