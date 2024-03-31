@@ -22,6 +22,33 @@ class ApiService {
       });
     }
   }
+
+  addAuthorizationHeader = (token: string) => {
+    this.INSTANCE.interceptors.request.use((config) => {
+      config.headers.Authorization = `Bearer ${token}`;
+      return config;
+    });
+  };
+
+  removeAuthorizationHeader = () => {
+    this.INSTANCE.interceptors.request.use((config) => {
+      config.headers.Authorization = null;
+      return config;
+    });
+  };
+
+  login = async (params: LoginParams) => {
+    const response = await this.INSTANCE.post('login', params);
+    const { token } = response.data;
+    Cookies.set('token', token);
+    this.addAuthorizationHeader(token);
+    return token;
+  };
+
+  getUser = async () => {
+    const response = await this.INSTANCE.get('get_user');
+    return response.data;
+  };
 }
 
 const API = new ApiService();
