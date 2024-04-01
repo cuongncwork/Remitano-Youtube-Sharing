@@ -14,7 +14,7 @@ export function* getVideos() {
   } catch (ex: any) {
     yield put({
       type: HomeTypes.GET_VIDEOS_FAILURE,
-      error: ex?.message || 'Get videos error',
+      error: ex?.response?.data?.message || ex?.message || 'Get videos error',
     });
   }
 }
@@ -39,7 +39,7 @@ export function* shareVideo({
   } catch (ex: any) {
     yield put({
       type: HomeTypes.SHARE_VIDEO_FAILURE,
-      error: ex?.message || 'Share video error',
+      error: ex?.response?.data?.message || ex?.message || 'Share video error',
     });
   }
 }
@@ -62,7 +62,7 @@ export function* voteVideo({ params, type }: { params: VoteParams; type: string 
   } catch (ex: any) {
     yield put({
       type: HomeTypes.VOTE_VIDEO_FAILURE,
-      error: ex?.message || 'Vote video error',
+      error: ex?.response?.data?.message || ex?.message || 'Vote video error',
     });
   }
 }
@@ -87,7 +87,7 @@ export function* removeVoteVideo({ vote, type }: { vote: Vote; type: string }) {
   } catch (ex: any) {
     yield put({
       type: HomeTypes.REMOVE_VOTE_VIDEO_FAILURE,
-      error: ex?.message || 'Remove vote video error',
+      error: ex?.response?.data?.message || ex?.message || 'Remove vote video error',
     });
   }
 }
