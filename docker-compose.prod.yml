@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: db
+    image: mysql
+    ports:
+      - '3306:3306'
+    env_file:
+      - .env
+    volumes:
+      - shared_volume:/var/lib/mysql
+
+  redis:
+    container_name: redis
+    image: redis
+    env_file:
+      - .env
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - '80:80'
+      - '443:443'
+    env_file:
+      - .env
+    stdin_open: true
+    depends_on:
+      - backend
+
+volumes:
+  shared_volume:
+    external: true
