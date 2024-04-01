@@ -36,7 +36,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain.
   config.action_cable.disable_request_forgery_protection = true
   config.action_cable.url = ENV["REACT_APP_BACKEND_CABLE_URL"]
-  config.action_cable.allowed_request_origins = ["http://34.173.54.45:3000"]
+  config.action_cable.allowed_request_origins = ["http://34.41.83.23:3000"]
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
