@@ -2,7 +2,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistCombineReducers } from 'redux-persist';
-import storage from 'redux-persist/es/storage';
+import storage from 'redux-persist/lib/storage';
 import rootSaga from '../../adapters/redux/sagas';
 import { homeReducer } from '../../adapters/redux/reducer/home';
 import { authReducer } from '../../adapters/redux/reducer/auth';
@@ -14,7 +14,7 @@ const reducers = {
 };
 
 /* Redux-Persist */
-const rootReducer = persistCombineReducers(
+export const rootReducer = persistCombineReducers(
   {
     key: 'root',
     storage,
